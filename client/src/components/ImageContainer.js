@@ -40,12 +40,18 @@ class ImagesContainer extends Component {
     return (
       <div>
         <h1>Images</h1>
-        <p>{this.state.index}</p>
-        <p onClick={this.handleCategory('cats')}>Cats</p>
-        <p onClick={this.handleCategory('sharks')}>Sharks</p>
-        <i class="fas fa-chevron-left" onClick={this.handleImage('prev')} />
-        <i class="fas fa-chevron-right" onClick={this.handleImage('next')} />
-        <img src={this.props.images[this.state.index]} alt="" srcset="" />
+        {this.props.categories.map(category => (
+          <p key={category} onClick={this.handleCategory(category)}>
+            {category}
+          </p>
+        ))}
+
+        <i className="fas fa-chevron-left" onClick={this.handleImage('prev')} />
+        <i
+          className="fas fa-chevron-right"
+          onClick={this.handleImage('next')}
+        />
+        <img src={this.props.images[this.state.index]} alt="" srcSet="" />
       </div>
     );
   }
@@ -54,9 +60,11 @@ class ImagesContainer extends Component {
 ImagesContainer.propTypes = {
   fetchImages: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 const mapStateToProps = state => ({
   images: state.app.images,
+  categories: state.app.categories,
 });
 
 export default connect(
