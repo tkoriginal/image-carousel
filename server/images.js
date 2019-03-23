@@ -23,4 +23,13 @@ const catsList = [
   'https://founded.media/hiring/photos/cats/4481336172_7f464f180d_b.jpg',
 ];
 
-module.exports = { sharksList: sharksList, catsList: catsList };
+const allImages = (() => {
+  const allImagesArr = [];
+  catsList.forEach((link, index) => {
+    allImagesArr.push(link);
+    allImagesArr.push(sharksList[index]);
+  });
+  return allImagesArr;
+})();
+
+module.exports = { sharksList, catsList, allImages };

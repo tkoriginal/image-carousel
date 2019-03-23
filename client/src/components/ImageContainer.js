@@ -8,7 +8,7 @@ import Image from './Image';
 
 class ImagesContainer extends Component {
   state = {
-    category: 'cats',
+    category: 'all',
     index: 0,
   };
   componentDidMount() {

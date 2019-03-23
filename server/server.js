@@ -2,7 +2,7 @@
 const PORT = 5000;
 const express = require('express');
 const app = express();
-const { sharksList, catsList } = require('./images.js');
+const { sharksList, catsList, allImages } = require('./images.js');
 
 app.get('/images/:id', (req, res) => {
   let id = req.params.id;
@@ -14,7 +14,7 @@ app.get('/images/:id', (req, res) => {
     res.send({ images: sharksList });
   }
   if (id === 'all') {
-    res.send({ images: catsList.concat(sharksList) });
+    res.send({ images: allImages });
   }
 });
 app.get('/user', (req, res) => res.send({ user: 'Travis' }));
