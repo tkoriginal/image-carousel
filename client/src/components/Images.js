@@ -7,24 +7,16 @@ import { fetchImages } from '../actions/actions';
 
 class Images extends Component {
   componentDidMount() {
-    this.props.fetchImages();
+    this.props.fetchImages('cats');
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.newPost) {
-      this.props.Images.unshift(nextProps.newPost);
-    }
-  }
   render() {
-    const postItems = this.props.Images.map(post => (
-      <div key={post.id}>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
-      </div>
+    const postItems = this.props.images.map(image => (
+      <img src={image} alt="" srcset="" />
     ));
     return (
       <div>
-        <h1>Post</h1>
+        <h1>Images</h1>
         {postItems}
       </div>
     );
@@ -33,12 +25,11 @@ class Images extends Component {
 
 Images.propTypes = {
   fetchImages: PropTypes.func.isRequired,
-  Images: PropTypes.array.isRequired,
+  images: PropTypes.array.isRequired,
   newPost: PropTypes.object,
 };
 const mapStateToProps = state => ({
-  Images: state.Images.items,
-  newPost: state.Images.item,
+  images: state.app.images,
 });
 
 export default connect(

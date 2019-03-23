@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Provider } from 'react-redux';
 
 import User from './components/User';
-
+import Images from './components/Images';
 import store from './store';
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ class App extends Component {
         <Container className="App">
           <User />
           <hr />
-          {/* <Posts /> */}
+          <Images />
         </Container>
       </Provider>
     );

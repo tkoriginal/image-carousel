@@ -14,10 +14,11 @@ export const fetchUser = () => dispatch => {
 export const fetchImages = category => dispatch => {
   fetch(`/images/${category}`)
     .then(res => res.json())
-    .then(images =>
+    .then(images => {
+      console.log(images);
       dispatch({
         type: FETCH_IMAGES,
-        payload: images,
-      }),
-    );
+        payload: images.images,
+      });
+    });
 };

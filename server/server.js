@@ -6,7 +6,8 @@ const { sharksList, catsList } = require('./images.js');
 
 app.get('/images/:id', (req, res) => {
   let id = req.params.id;
-  if (id === 'cat') {
+  console.log(id);
+  if (id === 'cats') {
     res.send({ images: catsList });
   }
 });

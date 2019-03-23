@@ -12,7 +12,7 @@ class User extends Component {
   }
 }
 const mapStateToProps = state => ({
-  user: state.posts.user,
+  user: state.app.user,
 });
 
 User.propTypes = {
