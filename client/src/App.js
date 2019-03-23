@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Provider } from 'react-redux';
 
-import Posts from './components/Posts';
-import PostForm from './components/PostForm';
+import User from './components/User';
 
 import store from './store';
 
@@ -17,9 +16,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container className="App">
-          <PostForm />
+          <User />
           <hr />
-          <Posts />
+          {/* <Posts /> */}
         </Container>
       </Provider>
     );

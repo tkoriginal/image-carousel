@@ -1,7 +1,7 @@
 import { FETCH_USER, FETCH_IMAGES } from './types';
 
-export const fetchPosts = () => dispatch => {
-  fetch('/')
+export const fetchUser = () => dispatch => {
+  fetch('/user')
     .then(res => res.json())
     .then(user =>
       dispatch({

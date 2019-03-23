@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchPosts } from '../actions/postActions';
-
 import styled from 'styled-components';
-class Posts extends Component {
+import { connect } from 'react-redux';
+
+import { fetchImages } from '../actions/actions';
+
+class Images extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchImages();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.newPost) {
-      this.props.posts.unshift(nextProps.newPost);
+      this.props.Images.unshift(nextProps.newPost);
     }
   }
   render() {
-    const postItems = this.props.posts.map(post => (
+    const postItems = this.props.Images.map(post => (
       <div key={post.id}>
         <h3>{post.title}</h3>
         <p>{post.body}</p>
@@ -30,17 +31,17 @@ class Posts extends Component {
   }
 }
 
-Posts.propTypes = {
-  fetchPosts: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired,
+Images.propTypes = {
+  fetchImages: PropTypes.func.isRequired,
+  Images: PropTypes.array.isRequired,
   newPost: PropTypes.object,
 };
 const mapStateToProps = state => ({
-  posts: state.posts.items,
-  newPost: state.posts.item,
+  Images: state.Images.items,
+  newPost: state.Images.item,
 });
 
 export default connect(
   mapStateToProps,
-  { fetchPosts },
-)(Posts);
+  { fetchImages },
+)(Images);
