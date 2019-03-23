@@ -5,13 +5,12 @@ import { Provider } from 'react-redux';
 import Posts from './components/Posts';
 import PostForm from './components/PostForm';
 
-import store from './store'
-
+import store from './store';
 
 const Container = styled.div`
   width: 80%;
   margin: 7em auto;
-`
+`;
 
 class App extends Component {
   render() {

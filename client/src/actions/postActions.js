@@ -1,29 +1,23 @@
-import { FETCH_POSTS, NEW_POST } from './types';
+import { FETCH_USER, FETCH_IMAGES } from './types';
 
 export const fetchPosts = () => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch('/')
     .then(res => res.json())
-    .then(posts =>
+    .then(user =>
       dispatch({
-        type: FETCH_POSTS,
-        payload: posts,
+        type: FETCH_USER,
+        payload: user,
       }),
     );
 };
 
-export const createPost = postData => dispatch => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify(postData),
-  })
+export const fetchImages = category => dispatch => {
+  fetch(`/images/${category}`)
     .then(res => res.json())
-    .then(post =>
+    .then(images =>
       dispatch({
-        type: NEW_POST,
-        payload: post,
+        type: FETCH_IMAGES,
+        payload: images,
       }),
     );
 };
