@@ -10,6 +10,12 @@ app.get('/images/:id', (req, res) => {
   if (id === 'cats') {
     res.send({ images: catsList });
   }
+  if (id === 'sharks') {
+    res.send({ images: sharksList });
+  }
+  if (id === 'all') {
+    res.send({ images: catsList.concat(sharksList) });
+  }
 });
 app.get('/user', (req, res) => res.send({ user: 'Travis' }));
 

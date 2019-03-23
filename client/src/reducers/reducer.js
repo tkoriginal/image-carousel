@@ -3,6 +3,7 @@ import { FETCH_USER, FETCH_IMAGES } from '../actions/types';
 const initialState = {
   user: {},
   images: [],
+  image: '',
 };
 
 export default function(state = initialState, action) {

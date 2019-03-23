@@ -5,28 +5,38 @@ import { connect } from 'react-redux';
 
 import { fetchImages } from '../actions/actions';
 
-class Images extends Component {
+class ImagesContainer extends Component {
+  state = {
+    category: 'cats',
+  };
   componentDidMount() {
-    this.props.fetchImages('cats');
+    this.props.fetchImages(this.state.category);
+  }
+
+  handleCategory(type) {
+    return e => {
+      this.setState({ category: type });
+    };
   }
 
   render() {
     const postItems = this.props.images.map(image => (
-      <img src={image} alt="" srcset="" />
+      <img src={image} alt="animal" />
     ));
     return (
       <div>
         <h1>Images</h1>
+        <p onClick={this.handleCategory('cats')}>Cats</p>
+        <p onClick={this.handleCategory('sharks')}>Sharks</p>
         {postItems}
       </div>
     );
   }
 }
 
-Images.propTypes = {
+ImagesContainer.propTypes = {
   fetchImages: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
-  newPost: PropTypes.object,
 };
 const mapStateToProps = state => ({
   images: state.app.images,
@@ -35,4 +45,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchImages },
-)(Images);
+)(ImagesContainer);
