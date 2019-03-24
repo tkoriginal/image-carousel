@@ -3,27 +3,45 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { fetchImages } from '../actions/actions';
-import Image from './Image';
+import { fetchImages } from '../actions';
 
 class ImagesContainer extends Component {
   state = {
-    category: 'all',
+    category: 'cats',
     index: 0,
+    categoriesChecked: ['cats'],
   };
   componentDidMount() {
     this.props.fetchImages(this.state.category);
   }
 
-  handleCategory = type => {
-    return e => {
-      this.props.fetchImages(type);
-      this.setState({ category: type });
-    };
+  handleCategoriesChecked = event => {
+    const categoriesChecked = this.state.categoriesChecked;
+    const selectedValue = event.target.value;
+    if (event.target.checked) {
+      categoriesChecked.push(selectedValue);
+      this.setState({ categoriesChecked });
+      this.handleCategoryChange();
+    } else {
+      let categoryIndex = categoriesChecked.indexOf(selectedValue);
+      categoriesChecked.splice(categoryIndex, 1);
+      this.setState(
+        state => ({ categoriesChecked }),
+        this.handleCategoryChange(),
+      );
+    }
   };
-
+  handleCategoryChange = () => {
+    const { categoriesChecked } = this.state;
+    const category =
+      categoriesChecked.length > 1 ? 'all' : categoriesChecked[0];
+    this.setState({ category });
+    if (this.state.categoriesChecked[0]) {
+      this.props.fetchImages(category);
+    }
+  };
   handleImage = action => {
-    return e => {
+    return () => {
       let index = this.state.index;
       const imageCount = this.props.images.length;
       if (action === 'next') {
@@ -41,9 +59,17 @@ class ImagesContainer extends Component {
       <div>
         <h1>Images</h1>
         {this.props.categories.map(category => (
-          <p key={category} onClick={this.handleCategory(category)}>
-            {category}
-          </p>
+          <div key={category}>
+            <input
+              // style={{ display: 'none' }}
+              type="checkbox"
+              id={category}
+              value={category}
+              defaultChecked={category === 'cats' ? 'checked' : null}
+              onClick={this.handleCategoriesChecked.bind(this)}
+            />
+            <label htmlFor={category}>{category}</label>
+          </div>
         ))}
 
         <i className="fas fa-chevron-left" onClick={this.handleImage('prev')} />

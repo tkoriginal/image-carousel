@@ -6,7 +6,7 @@ import User from './components/User';
 import ImageContainer from './components/ImageContainer';
 import store from './store';
 
-const Container = styled.div`
+const MainContent = styled.main`
   width: 80%;
   margin: 7em auto;
 `;
@@ -15,10 +15,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Container className="App">
+        <MainContent>
           <User />
           <ImageContainer />
-        </Container>
+        </MainContent>
       </Provider>
     );
   }
