@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Provider } from 'react-redux';
 
 import User from './components/User';
-import ImageContainer from './components/ImageContainer';
+import ImageCarousel from './components/ImageCarousel';
 import store from './store';
 
 const MainContent = styled.main`
@@ -16,7 +16,7 @@ export default function App() {
     <Provider store={store}>
       <MainContent>
         <User />
-        <ImageContainer />
+        <ImageCarousel />
       </MainContent>
     </Provider>
   );

@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import ReactLoading from 'react-loading';
 
 import { fetchImages } from '../actions';
 import Image from './Image';
 import Chevron from './Chevron';
 import Category from './Category';
 
-class ImagesContainer extends Component {
+const ImageContainer = styled.div`
+  width: 600px;
+  height: 520px;
+  overflow: hidden;
+`;
+class ImagesCarousel extends Component {
   state = {
     categoryToDisplay: 'cats',
     index: 0,
@@ -76,6 +82,12 @@ class ImagesContainer extends Component {
     this.setState({ index });
   };
 
+  isNotFirstImage = () => {
+    return this.state.index > 0;
+  };
+  isNotLastImage = () => {
+    return this.state.index < this.props.images.length - 1;
+  };
   render() {
     return (
       <div>
@@ -86,19 +98,37 @@ class ImagesContainer extends Component {
             onClick={this.handleCategoriesChecked.bind(this)}
           />
         ))}
-        <Chevron direction="left" onClick={this.handleClick('prev')} />
-        <Chevron direction="right" onClick={this.handleClick('next')} />
+        {this.isNotFirstImage() && (
+          <Chevron direction="left" onClick={this.handleClick('prev')} />
+        )}
+        {this.isNotLastImage() && (
+          <Chevron direction="right" onClick={this.handleClick('next')} />
+        )}
         {this.props.isLoading ? (
-          <p>Loading</p>
+          <ReactLoading
+            type="spinningBubbles"
+            color="#000"
+            height="100px"
+            width="100px"
+          />
         ) : (
-          <Image image={this.props.images[this.state.index]} />
+          <ImageContainer>
+            {/* <Image image={this.props.images[this.state.index]} /> */}
+            {this.isNotFirstImage() && (
+              <Image image={this.props.images[this.state.index - 1]} />
+            )}
+            <Image image={this.props.images[this.state.index]} />
+            {this.isNotLastImage() && (
+              <Image image={this.props.images[this.state.index + 1]} />
+            )}
+          </ImageContainer>
         )}
       </div>
     );
   }
 }
 
-ImagesContainer.propTypes = {
+ImagesCarousel.propTypes = {
   fetchImages: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
@@ -112,4 +142,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchImages },
-)(ImagesContainer);
+)(ImagesCarousel);
