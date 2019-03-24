@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { fetchImages } from '../actions';
 import Image from './Image';
+import Chevron from './Chevron';
+import Category from './Category';
 
 class ImagesContainer extends Component {
   state = {
@@ -77,27 +79,20 @@ class ImagesContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Images</h1>
-        {this.props.categories.map(categoryToDisplay => (
-          <div key={categoryToDisplay}>
-            <input
-              // style={{ display: 'none' }}
-              type="checkbox"
-              id={categoryToDisplay}
-              value={categoryToDisplay}
-              defaultChecked={categoryToDisplay === 'cats' ? 'checked' : null}
-              onClick={this.handleCategoriesChecked.bind(this)}
-            />
-            <label htmlFor={categoryToDisplay}>{categoryToDisplay}</label>
-          </div>
+        {this.props.categories.map(category => (
+          <Category
+            key={category}
+            category={category}
+            onClick={this.handleCategoriesChecked.bind(this)}
+          />
         ))}
-
-        <i className="fas fa-chevron-left" onClick={this.handleClick('prev')} />
-        <i
-          className="fas fa-chevron-right"
-          onClick={this.handleClick('next')}
-        />
-        <Image image={this.props.images[this.state.index]} />
+        <Chevron direction="left" onClick={this.handleClick('prev')} />
+        <Chevron direction="right" onClick={this.handleClick('next')} />
+        {this.props.isLoading ? (
+          <p>Loading</p>
+        ) : (
+          <Image image={this.props.images[this.state.index]} />
+        )}
       </div>
     );
   }
@@ -111,6 +106,7 @@ ImagesContainer.propTypes = {
 const mapStateToProps = state => ({
   images: state.app.images,
   categories: state.app.categories,
+  isLoading: state.app.isLoading,
 });
 
 export default connect(

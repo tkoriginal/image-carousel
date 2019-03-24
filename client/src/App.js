@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Provider } from 'react-redux';
 
@@ -11,17 +11,13 @@ const MainContent = styled.main`
   margin: 7em auto;
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <MainContent>
-          <User />
-          <ImageContainer />
-        </MainContent>
-      </Provider>
-    );
-  }
+export default function App() {
+  return (
+    <Provider store={store}>
+      <MainContent>
+        <User />
+        <ImageContainer />
+      </MainContent>
+    </Provider>
+  );
 }
-
-export default App;
