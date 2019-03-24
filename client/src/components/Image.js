@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Image(props) {
   return (
-    <div>
+    <div className={props.containerClass}>
       <img src={props.image} alt="cats or sharks" />
     </div>
   );

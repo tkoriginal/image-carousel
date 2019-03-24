@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_IMAGES } from '../actions';
+import { FETCH_IMAGES } from '../actions';
 
 export const initialState = Object.freeze({
   user: {},
@@ -8,12 +8,7 @@ export const initialState = Object.freeze({
 });
 
 export default function(state = initialState, action) {
-  const newState = { ...state };
-  // TODO: DELETE USER
   switch (action.type) {
-    case FETCH_USER:
-      newState.user = action.payload;
-      break;
     case `${FETCH_IMAGES}_REQUEST`:
       return { ...state, images: [], isLoading: true };
     case `${FETCH_IMAGES}_SUCCESS`:
@@ -24,5 +19,4 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-  return newState;
 }

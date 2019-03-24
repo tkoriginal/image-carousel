@@ -9,10 +9,56 @@ import Image from './Image';
 import Chevron from './Chevron';
 import Category from './Category';
 
+const Wrapper = styled.article`
+  width: 100%;
+  height: 600px;
+  background: #777;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
 const ImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  justifycontent: center;
+  alignitems: center;
+  flex-direction: column;
   width: 600px;
   height: 520px;
-  overflow: hidden;
+`;
+
+const CategoryContainer = styled.div`
+  display: flex;
+  font-size: 20px;
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  left: 50;
+`;
+
+const ChevLeft = styled.div`
+  position: absolute;
+  z-index: 2;
+  top: 50;
+  left: 15px;
+  color: #444;
+  font-size: 40px;
+`;
+const ChevRight = styled.div`
+  position: absolute;
+  z-index: 2;
+  top: 50;
+  right: 15px;
+  color: #fff;
+  font-size: 40px;
 `;
 class ImagesCarousel extends Component {
   state = {
@@ -61,9 +107,7 @@ class ImagesCarousel extends Component {
       this.props.fetchImages(categoryToDisplay);
     }
   };
-  handleKeyPress = e => {
-    console.log(e.key);
-  };
+
   handleClick = action => {
     return () => {
       this.handleIndex(action);
@@ -82,48 +126,65 @@ class ImagesCarousel extends Component {
     this.setState({ index });
   };
 
-  isNotFirstImage = () => {
-    return this.state.index > 0;
+  isFirstImage = () => {
+    return this.state.index < 1;
   };
-  isNotLastImage = () => {
-    return this.state.index < this.props.images.length - 1;
+  isLastImage = () => {
+    return this.state.index === this.props.images.length - 1;
   };
   render() {
     return (
-      <div>
-        {this.props.categories.map(category => (
-          <Category
-            key={category}
-            category={category}
-            onClick={this.handleCategoriesChecked.bind(this)}
-          />
-        ))}
-        {this.isNotFirstImage() && (
-          <Chevron direction="left" onClick={this.handleClick('prev')} />
+      <Wrapper>
+        <CategoryContainer>
+          {this.props.categories.map(category => (
+            <Category
+              key={category}
+              category={category}
+              onClick={this.handleCategoriesChecked.bind(this)}
+            />
+          ))}
+        </CategoryContainer>
+        {!this.isFirstImage() && (
+          <ChevLeft>
+            <Chevron direction="left" onClick={this.handleClick('prev')} />
+          </ChevLeft>
         )}
-        {this.isNotLastImage() && (
-          <Chevron direction="right" onClick={this.handleClick('next')} />
+        {!this.isLastImage() && (
+          <ChevRight>
+            <Chevron direction="right" onClick={this.handleClick('next')} />
+          </ChevRight>
         )}
         {this.props.isLoading ? (
-          <ReactLoading
-            type="spinningBubbles"
-            color="#000"
-            height="100px"
-            width="100px"
-          />
+          <LoadingContainer>
+            <ReactLoading
+              type="spinningBubbles"
+              color="#000"
+              height="100px"
+              width="100px"
+            />
+            <p>Loading...</p>
+          </LoadingContainer>
         ) : (
           <ImageContainer>
-            {/* <Image image={this.props.images[this.state.index]} /> */}
-            {this.isNotFirstImage() && (
-              <Image image={this.props.images[this.state.index - 1]} />
+            {!this.isFirstImage() && (
+              <Image
+                image={this.props.images[this.state.index - 1]}
+                containerClass="previous__image"
+              />
             )}
-            <Image image={this.props.images[this.state.index]} />
-            {this.isNotLastImage() && (
-              <Image image={this.props.images[this.state.index + 1]} />
+            <Image
+              image={this.props.images[this.state.index]}
+              containerClass="current__image"
+            />
+            {!this.isLastImage() && (
+              <Image
+                image={this.props.images[this.state.index + 1]}
+                containerClass="next__image"
+              />
             )}
           </ImageContainer>
         )}
-      </div>
+      </Wrapper>
     );
   }
 }
