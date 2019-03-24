@@ -4,17 +4,30 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { fetchImages } from '../actions';
+import Image from './Image';
 
 class ImagesContainer extends Component {
   state = {
-    category: 'cats',
+    categoryToDisplay: 'cats',
     index: 0,
     categoriesChecked: ['cats'],
   };
   componentDidMount() {
-    this.props.fetchImages(this.state.category);
+    this.props.fetchImages(this.state.categoryToDisplay);
+    document.addEventListener('keydown', this.handleKeyDown);
   }
-
+  handleKeyDown = event => {
+    switch (event.key) {
+      case 'ArrowRight':
+        this.handleIndex('next');
+        break;
+      case 'ArrowLeft':
+        this.handleIndex('prev');
+        break;
+      default:
+        break;
+    }
+  };
   handleCategoriesChecked = event => {
     const categoriesChecked = this.state.categoriesChecked;
     const selectedValue = event.target.value;
@@ -33,51 +46,58 @@ class ImagesContainer extends Component {
   };
   handleCategoryChange = () => {
     const { categoriesChecked } = this.state;
-    const category =
+    const categoryToDisplay =
       categoriesChecked.length > 1 ? 'all' : categoriesChecked[0];
-    this.setState({ category });
+    this.setState({ categoryToDisplay });
     if (this.state.categoriesChecked[0]) {
-      this.props.fetchImages(category);
+      this.props.fetchImages(categoryToDisplay);
     }
   };
-  handleImage = action => {
+  handleKeyPress = e => {
+    console.log(e.key);
+  };
+  handleClick = action => {
     return () => {
-      let index = this.state.index;
-      const imageCount = this.props.images.length;
-      if (action === 'next') {
-        index = index + 1 > imageCount - 1 ? 0 : index + 1;
-      }
-      if (action === 'prev') {
-        index = index - 1 < 0 ? imageCount - 1 : index - 1;
-      }
-      this.setState({ index });
+      this.handleIndex(action);
     };
+  };
+
+  handleIndex = action => {
+    let index = this.state.index;
+    const imageCount = this.props.images.length;
+    if (action === 'next') {
+      index = index + 1 > imageCount - 1 ? 0 : index + 1;
+    }
+    if (action === 'prev') {
+      index = index - 1 < 0 ? imageCount - 1 : index - 1;
+    }
+    this.setState({ index });
   };
 
   render() {
     return (
       <div>
         <h1>Images</h1>
-        {this.props.categories.map(category => (
-          <div key={category}>
+        {this.props.categories.map(categoryToDisplay => (
+          <div key={categoryToDisplay}>
             <input
               // style={{ display: 'none' }}
               type="checkbox"
-              id={category}
-              value={category}
-              defaultChecked={category === 'cats' ? 'checked' : null}
+              id={categoryToDisplay}
+              value={categoryToDisplay}
+              defaultChecked={categoryToDisplay === 'cats' ? 'checked' : null}
               onClick={this.handleCategoriesChecked.bind(this)}
             />
-            <label htmlFor={category}>{category}</label>
+            <label htmlFor={categoryToDisplay}>{categoryToDisplay}</label>
           </div>
         ))}
 
-        <i className="fas fa-chevron-left" onClick={this.handleImage('prev')} />
+        <i className="fas fa-chevron-left" onClick={this.handleClick('prev')} />
         <i
           className="fas fa-chevron-right"
-          onClick={this.handleImage('next')}
+          onClick={this.handleClick('next')}
         />
-        <img src={this.props.images[this.state.index]} alt="" srcSet="" />
+        <Image image={this.props.images[this.state.index]} />
       </div>
     );
   }
