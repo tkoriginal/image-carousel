@@ -19,7 +19,7 @@ describe('action tests', () => {
       // it('Should call API with correct category', () => {});
       // it('Should dispatch FETCH_IMAGES_FAILURE when API is rejected', () => {});
     });
-    it.skip('Should dispatch FETCH_IMAGES_SUCCESS when api is resolved', () => {
+    it('Should dispatch FETCH_IMAGES_SUCCESS when api is resolved', () => {
       const fetcher = () => Promise.resolve({ images: [1, 2, 3] });
       const dispatch = jest.fn();
 

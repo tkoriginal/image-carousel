@@ -36,6 +36,7 @@ const LoadingContainer = styled.div`
   height: 520px;
   & p {
     color: #77dd77;
+    font-size: 20px;
   }
 `;
 class App extends Component {
@@ -87,7 +88,24 @@ class App extends Component {
     this.props.fetchImages(this.state.categoryToDisplay);
   }
   render() {
-    const { index } = this.state;
+    if (this.state.categoriesChecked.length === 0) {
+      return (
+        <MainContent>
+          <CategoryContainer>
+            {this.props.categories.map(category => (
+              <Category
+                key={category}
+                category={category}
+                onClick={this.handleCategoriesChecked.bind(this)}
+              />
+            ))}
+          </CategoryContainer>
+          <LoadingContainer>
+            <p>Please pick at least one category</p>
+          </LoadingContainer>
+        </MainContent>
+      );
+    }
     return (
       <MainContent>
         <CategoryContainer>
@@ -103,14 +121,17 @@ class App extends Component {
           <LoadingContainer>
             <ReactLoading
               type="spinningBubbles"
-              color="#77dd77"
+              color="#77ff00"
               height="100px"
               width="100px"
             />
             <p>Loading...</p>
           </LoadingContainer>
         ) : (
-          <ImageCarousel index={index} handleIndex={this.handleIndex} />
+          <ImageCarousel
+            index={this.state.index}
+            handleIndex={this.handleIndex}
+          />
         )}
       </MainContent>
     );

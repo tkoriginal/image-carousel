@@ -4,13 +4,6 @@ import Image from './Image';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-const isFirstImage = imageIndex => {
-  return imageIndex < 1;
-};
-const isLastImage = (imageIndex, totalImages) => {
-  return imageIndex === totalImages - 1;
-};
-
 const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
