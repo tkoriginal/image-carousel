@@ -1,4 +1,4 @@
-#Image Carousel using React, Redux and Express
+#Image Carousel using React, Redux, Styled-Components and Express
 
 ## Features included:
 
