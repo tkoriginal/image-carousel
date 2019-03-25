@@ -1,4 +1,5 @@
-const sharksList = [
+const shuffle = require('lodash.shuffle');
+const sharks = [
   'https://founded.media/hiring/photos/sharks/11261840124_dc9ac72bbe_b.jpg',
   'https://founded.media/hiring/photos/sharks/513197047_2f861d56cb_b.jpg',
   'https://founded.media/hiring/photos/sharks/2989909952_b59500107e_o.jpg',
@@ -10,7 +11,7 @@ const sharksList = [
   'https://founded.media/hiring/photos/sharks/14730744390_cebc28aa86_k.jpg',
   'https://founded.media/hiring/photos/sharks/4936728723_91da549b05_b.jpg',
 ];
-const catsList = [
+const cats = [
   'https://founded.media/hiring/photos/cats/14157413946_fea785b4d6_k.jpg',
   'https://founded.media/hiring/photos/cats/16175483119_bd7374d8a8_h.jpg',
   'https://founded.media/hiring/photos/cats/13901304865_a444cf4d34_k.jpg',
@@ -22,14 +23,7 @@ const catsList = [
   'https://founded.media/hiring/photos/cats/11477923503_bbdf86387d_b.jpg',
   'https://founded.media/hiring/photos/cats/4481336172_7f464f180d_b.jpg',
 ];
+// used lodash to randomly shuffle arrays
+const all = shuffle([...sharks, ...cats]);
 
-const allImages = (() => {
-  const allImagesArr = [];
-  catsList.forEach((link, index) => {
-    allImagesArr.push(link);
-    allImagesArr.push(sharksList[index]);
-  });
-  return allImagesArr;
-})();
-
-module.exports = { sharksList, catsList, allImages };
+module.exports = { sharks, cats, all };

@@ -2,22 +2,16 @@
 const PORT = 5000;
 const express = require('express');
 const app = express();
-const { sharksList, catsList, allImages } = require('./images.js');
+const images = require('./images.js');
 
-app.get('/images/:id', (req, res) => {
-  let id = req.params.id;
-  console.log(id);
-  if (id === 'cats') {
-    res.send({ images: catsList });
+app.get('/images/:category', (req, res) => {
+  let category = req.params.category;
+  console.log(category);
+  if (!category || !Object.keys(images).includes(category)) {
+    return res.status(400).send('Category does not exist');
   }
-  if (id === 'sharks') {
-    res.send({ images: sharksList });
-  }
-  if (id === 'all') {
-    res.send({ images: allImages });
-  }
+  res.send({ images: images[category] });
 });
-app.get('/user', (req, res) => res.send({ user: 'Travis' }));
 
 app.listen(PORT, () => {
   console.log('Example app listening on port ' + PORT);
