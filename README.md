@@ -1,6 +1,6 @@
 #Image Carousel using React, Redux and Express
 
-Features included:
+## Features included:
 
 - Uses Redux
 - Includes Webpack (but abstracted via Create-React-App)
@@ -12,8 +12,11 @@ Features included:
 - Photos randomly displayed when both categories are included
 - Added some Unit Tests and a couple of snapshot tests
 
-Instruction:
-Client and Server:
+## Instruction:
 
-- npm install or yarn
-- yarn start (both running concurrently)
+### Client and Server:
+
+```
+npm install or yarn
+yarn start (both running concurrently)
+```
