@@ -18,5 +18,5 @@
 
 ```
 npm install or yarn
-npm start or yarn start (both running concurrently)
+npm start or yarn start (both client server and Express sever running concurrently)
 ```
