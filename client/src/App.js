@@ -5,8 +5,6 @@ import { fetchImages } from './actions';
 import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
 
-import './css/app.css';
-
 import ImageCarousel from './components/ImageCarousel';
 import Category from './components/Category';
 
