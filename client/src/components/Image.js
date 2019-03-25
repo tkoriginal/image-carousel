@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Image is set to background image of DIV for easier manipulation
+// Can be modified in a future implementation
+
 const Wrapper = styled.div`
   margin: 0;
   width: 800px;

@@ -7,7 +7,7 @@ export const fetchImagesBase = fetcher => category => dispatch => {
   dispatch({
     type: `${FETCH_IMAGES}_REQUEST`,
   });
-  fetcher(category)
+  return fetcher(category)
     .then(imagesObj => {
       dispatch({
         type: `${FETCH_IMAGES}_SUCCESS`,

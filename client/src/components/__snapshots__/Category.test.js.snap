@@ -1,0 +1,613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category test Snapshot test 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Category
+    category="cats"
+    onClick={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": "cats",
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <ForwardRef
+          defaultChecked="checked"
+          id="cats"
+          onClick={[Function]}
+          type="checkbox"
+          value="cats"
+        />,
+        <ForwardRef
+          htmlFor="cats"
+        >
+          cats
+        </ForwardRef>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "defaultChecked": "checked",
+          "id": "cats",
+          "onClick": [Function],
+          "type": "checkbox",
+          "value": "cats",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bwzfXH",
+            "isStatic": true,
+            "rules": Array [
+              "
+  display: none;
+  :checked + label {
+    background-color: #77dd77;
+    color: #fff;
+  }
+",
+            ],
+          },
+          "displayName": "styled.input",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bwzfXH",
+          "target": "input",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "cats",
+          "htmlFor": "cats",
+        },
+        "ref": null,
+        "rendered": "cats",
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htpNat",
+            "isStatic": true,
+            "rules": Array [
+              "
+  display: block;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 7px 15px;
+  color: #999;
+  background-color: #555;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s all;
+  cursor: pointer;
+  :hover {
+    transform: translateY(-2px);
+  }
+  :active {
+    transform: translateY(2px);
+  }
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htpNat",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+    ],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": true,
+        "rules": Array [
+          "
+  margin-right: 10px;
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": "cats",
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <ForwardRef
+            defaultChecked="checked"
+            id="cats"
+            onClick={[Function]}
+            type="checkbox"
+            value="cats"
+          />,
+          <ForwardRef
+            htmlFor="cats"
+          >
+            cats
+          </ForwardRef>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "defaultChecked": "checked",
+            "id": "cats",
+            "onClick": [Function],
+            "type": "checkbox",
+            "value": "cats",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": true,
+              "rules": Array [
+                "
+  display: none;
+  :checked + label {
+    background-color: #77dd77;
+    color: #fff;
+  }
+",
+              ],
+            },
+            "displayName": "styled.input",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": "input",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "cats",
+            "htmlFor": "cats",
+          },
+          "ref": null,
+          "rendered": "cats",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": true,
+              "rules": Array [
+                "
+  display: block;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 7px 15px;
+  color: #999;
+  background-color: #555;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s all;
+  cursor: pointer;
+  :hover {
+    transform: translateY(-2px);
+  }
+  :active {
+    transform: translateY(2px);
+  }
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": true,
+          "rules": Array [
+            "
+  margin-right: 10px;
+",
+          ],
+        },
+        "displayName": "styled.div",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": "div",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Image test Snapshot test 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Category
+    category="cats"
+    onClick={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": "cats",
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <ForwardRef
+          defaultChecked="checked"
+          id="cats"
+          onClick={[Function]}
+          type="checkbox"
+          value="cats"
+        />,
+        <ForwardRef
+          htmlFor="cats"
+        >
+          cats
+        </ForwardRef>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "defaultChecked": "checked",
+          "id": "cats",
+          "onClick": [Function],
+          "type": "checkbox",
+          "value": "cats",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bwzfXH",
+            "isStatic": true,
+            "rules": Array [
+              "
+  display: none;
+  :checked + label {
+    background-color: #77dd77;
+    color: #fff;
+  }
+",
+            ],
+          },
+          "displayName": "styled.input",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bwzfXH",
+          "target": "input",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "cats",
+          "htmlFor": "cats",
+        },
+        "ref": null,
+        "rendered": "cats",
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htpNat",
+            "isStatic": true,
+            "rules": Array [
+              "
+  display: block;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 7px 15px;
+  color: #999;
+  background-color: #555;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s all;
+  cursor: pointer;
+  :hover {
+    transform: translateY(-2px);
+  }
+  :active {
+    transform: translateY(2px);
+  }
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htpNat",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+    ],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": true,
+        "rules": Array [
+          "
+  margin-right: 10px;
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": "cats",
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <ForwardRef
+            defaultChecked="checked"
+            id="cats"
+            onClick={[Function]}
+            type="checkbox"
+            value="cats"
+          />,
+          <ForwardRef
+            htmlFor="cats"
+          >
+            cats
+          </ForwardRef>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "defaultChecked": "checked",
+            "id": "cats",
+            "onClick": [Function],
+            "type": "checkbox",
+            "value": "cats",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": true,
+              "rules": Array [
+                "
+  display: none;
+  :checked + label {
+    background-color: #77dd77;
+    color: #fff;
+  }
+",
+              ],
+            },
+            "displayName": "styled.input",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": "input",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "cats",
+            "htmlFor": "cats",
+          },
+          "ref": null,
+          "rendered": "cats",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": true,
+              "rules": Array [
+                "
+  display: block;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  padding: 7px 15px;
+  color: #999;
+  background-color: #555;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s all;
+  cursor: pointer;
+  :hover {
+    transform: translateY(-2px);
+  }
+  :active {
+    transform: translateY(2px);
+  }
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": true,
+          "rules": Array [
+            "
+  margin-right: 10px;
+",
+          ],
+        },
+        "displayName": "styled.div",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": "div",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

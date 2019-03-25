@@ -35,7 +35,6 @@ export default function Category(props) {
   return (
     <Wrapper key={props.category}>
       <Input
-        // style={{ display: 'none' }}
         type="checkbox"
         id={props.category}
         value={props.category}

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Chevron from './Chevron';
 import { connect } from 'react-redux';
 import ImagesContainer from './ImagesContainer';
+
+// Carousel bring together the chevrons and image container
 const Wrapper = styled.article`
   width: 800px;
   height: 600px;
@@ -44,6 +46,8 @@ const isFirstImage = imageIndex => {
 const isLastImage = (imageIndex, totalImages) => {
   return imageIndex === totalImages - 1;
 };
+
+// Clean up global eventlisteners on component unmount
 class ImagesCarousel extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -76,6 +80,7 @@ class ImagesCarousel extends Component {
     return (
       <Wrapper>
         {!isFirstImage(this.props.index) && (
+          //Direction specific chevron containers to help with positioning
           <ChevLeft>
             <Chevron direction="left" onClick={this.handleClick('prev')} />
           </ChevLeft>
@@ -85,7 +90,7 @@ class ImagesCarousel extends Component {
             <Chevron direction="right" onClick={this.handleClick('next')} />
           </ChevRight>
         )}
-        <ImagesContainer index={this.props.index} />
+        <ImagesContainer index={this.props.index} images={this.props.images} />
       </Wrapper>
     );
   }
@@ -94,6 +99,7 @@ class ImagesCarousel extends Component {
 ImagesCarousel.propTypes = {
   images: PropTypes.array.isRequired,
   index: PropTypes.number.isRequired,
+  handleIndex: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -10,6 +10,10 @@ import './css/app.css';
 import ImageCarousel from './components/ImageCarousel';
 import Category from './components/Category';
 
+// The App component is responsible for communicating and managing top level redux state and logic,
+// leaving the children to simply work on rendering the view
+// Images are only ever obtained from redux and never stored in state
+
 const MainContent = styled.main`
   width: 1100px;
   height: 750px;
@@ -39,13 +43,15 @@ const LoadingContainer = styled.div`
     font-size: 20px;
   }
 `;
+
 class App extends Component {
   state = {
     categoryToDisplay: 'cats',
     index: 0,
     categoriesChecked: ['cats'],
   };
-
+  // Handles when the category button is click and called handler to change categories and fetch
+  // new list of images
   handleCategoriesChecked = event => {
     const categoriesChecked = this.state.categoriesChecked;
     const selectedValue = event.target.value;
@@ -65,13 +71,15 @@ class App extends Component {
   handleCategoryChange = () => {
     const { categoriesChecked } = this.state;
     const categoryToDisplay =
-      categoriesChecked.length > 1 ? 'all' : categoriesChecked[0];
-    this.setState({ categoryToDisplay });
+      categoriesChecked.length === this.props.categories.length
+        ? 'all'
+        : categoriesChecked[0];
+    this.setState({ categoryToDisplay, index: 0 });
     if (this.state.categoriesChecked[0]) {
       this.props.fetchImages(categoryToDisplay);
     }
   };
-
+  // Keeps track of which image/index in the the array the component are on
   handleIndex = action => {
     let index = this.state.index;
     const imageCount = this.props.images.length;
@@ -84,28 +92,11 @@ class App extends Component {
     this.setState({ index });
   };
 
+  //When component first mounts, 'Cats' image list is fetched by default
   componentDidMount() {
     this.props.fetchImages(this.state.categoryToDisplay);
   }
   render() {
-    if (this.state.categoriesChecked.length === 0) {
-      return (
-        <MainContent>
-          <CategoryContainer>
-            {this.props.categories.map(category => (
-              <Category
-                key={category}
-                category={category}
-                onClick={this.handleCategoriesChecked.bind(this)}
-              />
-            ))}
-          </CategoryContainer>
-          <LoadingContainer>
-            <p>Please pick at least one category</p>
-          </LoadingContainer>
-        </MainContent>
-      );
-    }
     return (
       <MainContent>
         <CategoryContainer>
@@ -117,7 +108,7 @@ class App extends Component {
             />
           ))}
         </CategoryContainer>
-        {this.props.isLoading ? (
+        {this.props.isLoading && (
           <LoadingContainer>
             <ReactLoading
               type="spinningBubbles"
@@ -127,7 +118,13 @@ class App extends Component {
             />
             <p>Loading...</p>
           </LoadingContainer>
-        ) : (
+        )}
+        {this.state.categoriesChecked.length === 0 && (
+          <LoadingContainer>
+            <p>Please pick at least one category</p>
+          </LoadingContainer>
+        )}
+        {!this.props.isLoading && this.state.categoriesChecked.length > 0 && (
           <ImageCarousel
             index={this.state.index}
             handleIndex={this.handleIndex}
